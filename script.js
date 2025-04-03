@@ -1,30 +1,30 @@
-// Digital Clock
-
 function updateClock() {
     const now = new Date();
-    document.getElementById("clock").innerText = now.toLocaleTimeString();
+    document.getElementById('clock').innerText = now.toLocaleTimeString();
 }
 setInterval(updateClock, 1000);
-updateClock(); // Call once to avoid delay
 
-// Random Number Generator
-function generateNumber() {
-    const randomNum = Math.floor(Math.random() * 100) + 1;
-    document.getElementById("random-number").innerText = `Random Number: ${randomNum}`;
+function toggleTheme() {
+    document.body.classList.toggle('dark-mode');
+    gtag('event', 'theme_toggle', { 'event_category': 'UI', 'event_label': document.body.classList.contains('dark-mode') ? 'Dark Mode' : 'Light Mode' });
 }
 
-// Background Color Changer
-function changeColor() {
-    const randomColor = '#' + Math.floor(Math.random()*16777215).toString(16);
-    document.body.style.backgroundColor = randomColor;
+function trackDownload() {
+    gtag('event', 'download', { 'event_category': 'User Action', 'event_label': 'Time Downloaded' });
+    alert("Time downloaded!");
 }
 
-// Greet User
-function greetUser() {
-    const name = document.getElementById("username").value;
-    if (name) {
-        document.getElementById("greeting").innerText = `Hello, ${name}!`;
-    } else {
-        alert("Please enter your name.");
-    }
+function trackShare() {
+    gtag('event', 'share', { 'event_category': 'User Action', 'event_label': 'Shared Clock' });
+    alert("Shared successfully!");
+}
+
+function trackTimezoneChange() {
+    let timezone = document.getElementById('timezone').value;
+    gtag('event', 'timezone_change', { 'event_category': 'Settings', 'event_label': timezone });
+}
+
+function trackSearch() {
+    let query = document.getElementById('search').value;
+    gtag('event', 'search', { 'event_category': 'User Action', 'search_term': query });
 }

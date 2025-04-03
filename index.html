@@ -1,48 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Simple Interactive Website</title>
-    
-        <!-- Google Analytics Tag -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-4LM07K8065"></script>
-        <script>
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-    
-          gtag('config', 'G-4LM07K8065');
-        </script>
-    
-        <link rel="stylesheet" href="style.css">
-  
-    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simple Interactive Website</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Digital Clock with GA4</title>
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Google Analytics GA4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-4LM07K8065"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-4LM07K8065');
+    </script>
 </head>
 <body>
-    <div class="container">
-        <h1>Digital Clock</h1>
-
-        <!-- Digital Clock -->
-        <h2 id="clock">Loading time...</h2>
-
-        <!-- Random Number Generator -->
-        <!-- <button onclick="generateNumber()">Generate Random Number</button>
-        <p id="random-number"></p> -->
-
-        <!-- Background Color Changer -->
-        <button onclick="changeColor()">Change Background Color</button>
-
-        <!-- Hello User -->
-        <input type="text" id="username" placeholder="Enter your name">
-        <button onclick="greetUser()">Say Hello</button>
-        <p id="greeting"></p>
+    <h1>Digital Clock</h1>
+    <div class="clock" id="clock"></div>
+    
+    <div class="controls">
+        <button onclick="toggleTheme()">Toggle Theme</button>
+        <button onclick="trackDownload()">Download Time</button>
+        <button onclick="trackShare()">Share</button>
+        <select id="timezone" onchange="trackTimezoneChange()">
+            <option value="UTC">UTC</option>
+            <option value="America/New_York">New York</option>
+            <option value="Asia/Kolkata">India</option>
+            <option value="Europe/London">London</option>
+        </select>
     </div>
+    
+    <p>Search Timezones:</p>
+    <input type="text" id="search" oninput="trackSearch()" placeholder="Search...">
 
     <script src="script.js"></script>
 </body>
